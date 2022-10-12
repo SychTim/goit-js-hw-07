@@ -5,11 +5,16 @@ const gallery = document.querySelector('.gallery');
 
 let string = galleryItems.map(array => {
         return `<div class="gallery__item">
-    <img class="gallery__image gallery__link"
-    data-source="${array.original}"
-    src="${array.preview}"
-    alt="${array.description}">
-</div>`;
+        <a class="gallery__link" href="large-image.jpg">
+            <img
+            class="gallery__image"
+            src="${array.preview}"
+            data-source="${array.original}"
+            alt="${array.description}"
+            />
+        </a>
+    </div>`;
+
 }).join('');
 
 gallery.innerHTML = string;
@@ -17,6 +22,9 @@ gallery.innerHTML = string;
 gallery.addEventListener('click', openModal);
 
 function openModal(evt) {
+    
+    evt.preventDefault();
+
     if (evt.target.nodeName !== 'IMG') {
         return;
     }
